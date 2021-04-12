@@ -1,13 +1,15 @@
 import countriesTamplate from '../templates/countries.hbs'
 import countriesTamplateList from '../templates/countriesTamplateList.hbs'
 import api from './fetchCountries.js'
+import debouns from 'lodash.debounce'
+import noti from './notification.js'
 
 const input = document.querySelector('input')
-input.addEventListener('input', inputSubmit)
 
 function inputSubmit(e) {
     const inputValue = e.target.value
-    api.fetchCountries('inputValue')
+    
+    api.fetchCountries(inputValue)
     .then(data=>{
         console.log(data);
         if (data.length === 1) {
@@ -17,7 +19,7 @@ function inputSubmit(e) {
             markupCountriesList(data)
         }
         else if (data.length >10) {
-            console.log('Сделай запрос более специфичным');
+            noti.error404()
         }
     })
 }
@@ -29,3 +31,5 @@ function renderCountries(data) {
 function markupCountriesList(data) {
     const markupCountry = document.querySelector('.countries').innerHTML = countriesTamplateList(data) 
 }
+
+input.addEventListener('input',debouns(inputSubmit, 1000))

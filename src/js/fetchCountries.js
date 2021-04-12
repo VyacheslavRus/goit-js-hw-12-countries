@@ -1,6 +1,10 @@
-const baseUrl = 'https://restcountries.eu/rest/v2/name/'
-function fetchCountries(searchQuery) {
-    return fetch(`${baseUrl}${searchQuery}`)
+import notif from './notification.js'
+
+ function fetchCountries(searchQuery) {
+    return fetch(`https://restcountries.eu/rest/v2/name/${searchQuery}`)
    .then(response => response.json())
-}
-export default {fetchCountries}
+   .catch(error => {
+       notif.error(error)})
+   }
+
+   export default {fetchCountries}
