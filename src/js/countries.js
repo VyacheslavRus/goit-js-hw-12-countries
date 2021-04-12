@@ -8,7 +8,7 @@ const input = document.querySelector('input')
 
 function inputSubmit(e) {
     const inputValue = e.target.value
-    
+    const markupCountry = document.querySelector('.countries').innerHTML = '';
     api.fetchCountries(inputValue)
     .then(data=>{
         console.log(data);
