@@ -8,12 +8,12 @@ import notif from './notification.js'
             return response.json()
         }
         else {
-            notif.error(error) 
+            notif.error007(error) 
         }
         })
 
    .catch(error => {
-       notif.error(error)})
+       notif.error007(error)})
    }
 
    export default {fetchCountries}

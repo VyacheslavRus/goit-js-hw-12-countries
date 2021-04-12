@@ -7,13 +7,15 @@ import '@pnotify/core/dist/PNotify.css';
 export default {
      error404() {
         error({
-            text: 'Введи больше для совпадения!'
-          }, 30);
+            text: 'Введи больше для совпадения!', 
+            delay: 1000
+          });
     },
 
-     error() {
+     error007() {
         error({
-            text: 'Ерунда'
-          }, 30);
+            text: 'Ерунда',
+            delay: 1000
+          });
     }
 }
